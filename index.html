@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Der Marketing-Mix – Netflix</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #141414;
+    color: #ffffff;
+    font-family: 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+    padding: 40px 32px 56px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 36px;
+    padding-bottom: 28px;
+    border-bottom: 2px solid #e50914;
+  }
+
+  .header-left { flex: 1; }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #e50914;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  h1 span { color: #e50914; }
+
+  .subtitle {
+    font-size: 13.5px;
+    color: #aaaaaa;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  .authors {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .authors-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #666;
+  }
+
+  .authors-names {
+    font-size: 14px;
+    font-weight: 600;
+    color: #cccccc;
+    text-align: right;
+  }
+
+  /* ── DEFINITION BLOCK ── */
+  .definition {
+    background: #1f1f1f;
+    border-left: 4px solid #e50914;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  .def-icon {
+    font-size: 22px;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .definition p {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: #dddddd;
+  }
+
+  .definition strong { color: #ffffff; }
+
+  /* ── OVERVIEW DIAGRAM ── */
+  .overview {
+    margin-bottom: 36px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e50914;
+    margin-bottom: 14px;
+  }
+
+  .diagram {
+    display: grid;
+    grid-template-columns: 1fr 120px 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 0;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .diag-box {
+    background: #222;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+  }
+
+  .diag-center {
+    background: transparent;
+    border: 2px solid #e50914;
+    border-radius: 6px;
+    padding: 12px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    text-align: center;
+    grid-column: 2;
+    grid-row: 2;
+    line-height: 1.4;
+  }
+
+  .diag-arrow {
+    color: #e50914;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1;
+  }
+
+  /* ── 4P GRID ── */
+  .grid-4p {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .card {
+    background: #1f1f1f;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border-bottom: 1px solid #2d2d2d;
+  }
+
+  .card-bar {
+    width: 5px;
+    background: #e50914;
+    align-self: stretch;
+    flex-shrink: 0;
+  }
+
+  .card-title-block {
+    padding: 13px 16px;
+    flex: 1;
+  }
+
+  .card-p-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #e50914;
+    margin-bottom: 2px;
+  }
+
+  .card-title {
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+  }
+
+  .card-subtitle {
+    font-size: 11px;
+    color: #888;
+    font-weight: 400;
+  }
+
+  .card-body {
+    padding: 0 16px 16px 21px;
+    flex: 1;
+  }
+
+  .card-item {
+    margin-top: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+
+  .card-item-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    width: 18px;
+    text-align: center;
+  }
+
+  .card-item-text { flex: 1; }
+
+  .card-item-name {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 1px;
+  }
+
+  .card-item-desc {
+    font-size: 11.5px;
+    color: #999;
+    line-height: 1.5;
+  }
+
+  /* ── THEORIE FRAGEN ── */
+  .theory-box {
+    background: #2a2a2a;
+    border-radius: 5px;
+    padding: 10px 14px;
+    margin: 12px 0 0 0;
+    margin-left: 0;
+  }
+
+  .theory-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #777;
+    margin-bottom: 6px;
+  }
+
+  .theory-q {
+    font-size: 11px;
+    color: #aaa;
+    line-height: 1.55;
+    padding-left: 10px;
+    position: relative;
+  }
+
+  .theory-q::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: #e50914;
+    font-weight: 700;
+  }
+
+  /* ── ZUSAMMENFASSUNG ── */
+  .summary {
+    margin-bottom: 32px;
+  }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: #333;
+    border: 1px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .summary-cell {
+    background: #1a1a1a;
+    padding: 16px 20px;
+    position: relative;
+  }
+
+  .summary-cell-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #e50914;
+    margin-bottom: 6px;
+  }
+
+  .summary-cell-text {
+    font-size: 12.5px;
+    color: #cccccc;
+    line-height: 1.6;
+  }
+
+  .summary-center-wrap {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    background: #141414;
+    padding: 14px;
+  }
+
+  .summary-center-pill {
+    background: #1f1f1f;
+    border: 2px solid #e50914;
+    border-radius: 30px;
+    padding: 8px 28px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: 0.01em;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid #2d2d2d;
+    padding-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-note {
+    font-size: 11px;
+    color: #555;
+  }
+
+  .footer-authors {
+    font-size: 11px;
+    color: #666;
+    font-weight: 500;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #141414 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .grid-4p { page-break-inside: avoid; }
+  }
+
+  @media (max-width: 600px) {
+    body { padding: 20px 16px 36px; }
+    h1 { font-size: 26px; }
+    .header { flex-direction: column; gap: 16px; }
+    .authors { align-items: flex-start; }
+    .authors-names { text-align: left; }
+    .grid-4p { grid-template-columns: 1fr; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .summary-center-wrap { grid-column: 1; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <div class="eyebrow">Marketing · 4Ps in der Praxis</div>
+    <h1>Der Marketing-Mix:<br><span>Netflix</span></h1>
+    <p class="subtitle">Die 4Ps in der Praxis – Erfolgsstrategie am Beispiel des<br>weltweit führenden Streaming-Dienstes</p>
+  </div>
+  <div class="authors">
+    <span class="authors-label">Präsentation von</span>
+    <span class="authors-names">Lazar, Omar &amp; Julian</span>
+  </div>
+</header>
+
+<!-- DEFINITION -->
+<div class="definition">
+  <div class="def-icon">▶</div>
+  <p>
+    <strong>Was ist der Marketing-Mix?</strong><br>
+    Das koordinierte Zusammenspiel der vier Marketinginstrumente – <strong>Product, Price, Place und Promotion</strong> – mit dem Ziel, Kundenbedürfnisse profitabel zu erfüllen. Alle vier Bereiche müssen aufeinander abgestimmt sein, um die Zielgruppe optimal zu erreichen.
+  </p>
+</div>
+
+<!-- 4P KARTEN -->
+<div class="section-label">Die vier Instrumente</div>
+<div class="grid-4p">
+
+  <!-- PRODUCT -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-bar"></div>
+      <div class="card-title-block">
+        <div class="card-p-label">Kapitel 1</div>
+        <div class="card-title">Product</div>
+        <div class="card-subtitle">Produktpolitik – Vom Stream zur Sucht</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-item">
+        <div class="card-item-icon">☁</div>
+        <div class="card-item-text">
+          <div class="card-item-name">On-Demand Streaming</div>
+          <div class="card-item-desc">Filme &amp; Serien jederzeit auf Abruf, ohne feste Sendezeiten.</div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="card-item-icon">🎬</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Eigenproduktionen</div>
+          <div class="card-item-desc">Exklusiver Content wie <em>Stranger Things</em> oder <em>The Crown</em> – nur bei Netflix.</div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="card-item-icon">⬇</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Offline-Funktion</div>
+          <div class="card-item-desc">Downloads für unterwegs – ideal im Flugzeug oder ohne WLAN.</div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="card-item-icon">🤖</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Machine Learning</div>
+          <div class="card-item-desc">Algorithmus-gestützte, personalisierte Empfehlungen zur Kundenbindung.</div>
+        </div>
+      </div>
+      <div class="theory-box">
+        <div class="theory-label">Klassische Fragen</div>
+        <div class="theory-q">Welche Eigenschaften hat das Produkt?</div>
+        <div class="theory-q">Wie ist das Design (z.B. Verpackung)?</div>
+        <div class="theory-q">Welche Innovationen &amp; Kundendienste gibt es?</div>
+        <div class="theory-q">Wie breit ist das Sortiment?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRICE -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-bar"></div>
+      <div class="card-title-block">
+        <div class="card-p-label">Kapitel 2</div>
+        <div class="card-title">Price</div>
+        <div class="card-subtitle">Preispolitik – Flexibilität als Hebel</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-item">
+        <div class="card-item-icon">📺</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Abomodelle: Standard &amp; Premium</div>
+          <div class="card-item-desc">Standard bietet HD-Qualität, Premium 4K-Auflösung auf mehreren Geräten gleichzeitig.</div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="card-item-icon">🔓</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Niedrige Kündigungshürde</div>
+          <div class="card-item-desc">Monatlich kündbar. <strong>Psychologischer Effekt:</strong> Kunden bleiben länger, da kein Druck durch 12-Monats-Bindung.</div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="card-item-icon">🌐</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Regionale Anpassung</div>
+          <div class="card-item-desc">Preise variieren nach lokaler Kaufkraft (z.B. Indien vs. Deutschland). Aufpreis für Account-Sharing außerhalb des Haushalts.</div>
+        </div>
+      </div>
+      <div class="theory-box">
+        <div class="theory-label">Klassische Fragen</div>
+        <div class="theory-q">Welches Preissegment?</div>
+        <div class="theory-q">Gibt es Rabatte (z.B. für Schüler)?</div>
+        <div class="theory-q">Bieten wir Finanzierung an?</div>
+        <div class="theory-q">Verfolgen wir ein Lock-in-Modell?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLACE -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-bar"></div>
+      <div class="card-title-block">
+        <div class="card-p-label">Kapitel 3</div>
+        <div class="card-title">Place</div>
+        <div class="card-subtitle">Distributionspolitik – Weltweite Verfügbarkeit</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-item">
+        <div class="card-item-icon">💻</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Reine Online-Distribution</div>
+          <div class="card-item-desc">Verfügbar via Website, App, Smart-TV &amp; Smartphone – ursprünglich als DVD-Versand gestartet.</div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="card-item-icon">🌍</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Globale Reichweite</div>
+          <div class="card-item-desc">In über 190 Ländern verfügbar, mit lokalisierter Benutzeroberfläche in der jeweiligen Sprache.</div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="card-item-icon">📡</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Kooperationen &amp; Hardware</div>
+          <div class="card-item-desc">Integration in Apple TV, Fire TV &amp; Roku. Der rote Netflix-Button auf Fernbedienungen sorgt für maximale Barrierefreiheit.</div>
+        </div>
+      </div>
+      <div class="theory-box">
+        <div class="theory-label">Klassische Fragen</div>
+        <div class="theory-q">Direkter oder indirekter Absatz?</div>
+        <div class="theory-q">Wie gelangt die Ware zum Kunden?</div>
+        <div class="theory-q">Wie sind die Transportwege?</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROMOTION -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-bar"></div>
+      <div class="card-title-block">
+        <div class="card-p-label">Kapitel 4</div>
+        <div class="card-title">Promotion</div>
+        <div class="card-subtitle">Kommunikationspolitik – Zielgruppe aktivieren</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="card-item">
+        <div class="card-item-icon">📱</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Social Media &amp; Memes</div>
+          <div class="card-item-desc">Gezielte Kampagnen auf Instagram &amp; YouTube zum Start neuer Serien.</div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="card-item-icon">📧</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Programmatic Ads &amp; Retargeting</div>
+          <div class="card-item-desc">Automatisierte E-Mails an Ex-Kunden basierend auf früherem Sehverhalten: <em>„Die neue Staffel ist da!"</em></div>
+        </div>
+      </div>
+      <div class="card-item">
+        <div class="card-item-icon">🚌</div>
+        <div class="card-item-text">
+          <div class="card-item-name">Out-of-Home &amp; Events</div>
+          <div class="card-item-desc">Immersive Offline-Erlebnisse: <em>Stranger Things</em>-Bus in Mailand, Squid Game Parks – reales Markenerlebnis.</div>
+        </div>
+      </div>
+      <div class="theory-box">
+        <div class="theory-label">Klassische Fragen</div>
+        <div class="theory-q">Welche Instrumente sind sinnvoll (Internet, Radio, Events)?</div>
+        <div class="theory-q">Wie beeinflussen wir Meinungen der Zielgruppe?</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ZUSAMMENFASSUNG -->
+<div class="summary">
+  <div class="section-label">Zusammenfassung – Die 4Ps im Zusammenspiel</div>
+  <div class="summary-grid">
+    <div class="summary-cell">
+      <div class="summary-cell-label">Product</div>
+      <div class="summary-cell-text">On-Demand, Originals, KI-Personalisierung</div>
+    </div>
+    <div class="summary-cell">
+      <div class="summary-cell-label">Price</div>
+      <div class="summary-cell-text">Flexible Abos, monatlich kündbar, regional angepasst</div>
+    </div>
+    <div class="summary-center-wrap">
+      <div class="summary-center-pill">Kundenbindung &amp; Profitabilität</div>
+    </div>
+    <div class="summary-cell">
+      <div class="summary-cell-label">Place</div>
+      <div class="summary-cell-text">190+ Länder, App-Ökosystem, Remote-Button</div>
+    </div>
+    <div class="summary-cell">
+      <div class="summary-cell-label">Promotion</div>
+      <div class="summary-cell-text">Memes, Retargeting-Mails, Out-of-Home Events</div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <span class="footer-note">Marketing-Mix · 4Ps in der Praxis am Beispiel Netflix</span>
+  <span class="footer-authors">Lazar · Omar · Julian</span>
+</footer>
+
+</body>
+</html>
